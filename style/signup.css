@@ -1,0 +1,380 @@
+ 
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --background: hsl(240, 10%, 3.9%);
+    --foreground: hsl(0, 0%, 98%);
+    --card: hsl(240, 10%, 3.9%);
+    --card-foreground: hsl(0, 0%, 98%);
+    --primary: hsl(263, 83%, 57%);
+    --primary-foreground: hsl(0, 0%, 98%);
+    --secondary: hsl(240, 3.7%, 15.9%);
+    --accent: hsl(191, 91%, 36%);
+    --muted: hsl(240, 3.7%, 15.9%);
+    --muted-foreground: hsl(240, 5%, 64.9%);
+    --border: hsl(240, 3.7%, 15.9%);
+    --input: hsl(240, 3.7%, 15.9%);
+    --destructive: hsl(0, 84.2%, 60.2%);
+    
+    /* Custom gradients and effects */
+    --gradient-primary: linear-gradient(135deg, hsl(263, 83%, 57%), hsl(191, 91%, 36%));
+    --gradient-secondary: linear-gradient(180deg, hsl(240, 10%, 3.9%), hsl(240, 3.7%, 15.9%));
+    --tech-glow: 0 0 20px hsl(263, 83%, 57%, 0.3);
+    --tech-shadow: 0 10px 30px -10px hsl(263, 83%, 57%, 0.2);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --radius: 0.5rem;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--gradient-secondary);
+    color: var(--foreground);
+    line-height: 1.6;
+}
+
+/* Container and Layout */
+.container {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(139, 92, 246, 0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+/* Decorative Elements */
+.decorative-element {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+.decorative-element.top-left {
+    top: 2.5rem;
+    left: 2.5rem;
+    width: 5rem;
+    height: 5rem;
+    background: hsl(263, 83%, 57%, 0.2);
+}
+
+.decorative-element.bottom-right {
+    bottom: 2.5rem;
+    right: 2.5rem;
+    width: 8rem;
+    height: 8rem;
+    background: hsl(191, 91%, 36%, 0.2);
+}
+
+.line-element {
+    position: absolute;
+    width: 2px;
+    background: var(--gradient-primary);
+    filter: blur(1px);
+}
+
+.line-element.left {
+    top: 50%;
+    left: 0;
+    height: 8rem;
+    transform: translateY(-50%);
+}
+
+.line-element.right {
+    top: 25%;
+    right: 0;
+    height: 6rem;
+}
+
+/* Content */
+.content {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.main-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--muted-foreground);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Registration Card */
+.registration-card {
+    max-width: 768px;
+    margin: 0 auto;
+    background: hsla(240, 10%, 3.9%, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(240, 3.7%, 15.9%, 0.5);
+    border-radius: var(--radius);
+    box-shadow: var(--tech-shadow);
+    overflow: hidden;
+}
+
+.card-header {
+    text-align: center;
+    padding: 2rem 2rem 0;
+}
+
+.card-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    font-size: 1.125rem;
+    color: var(--muted-foreground);
+    margin-bottom: 1rem;
+}
+
+/* Form Styles */
+.registration-form {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: 600;
+    color: var(--foreground);
+    font-size: 0.875rem;
+}
+
+input, select, textarea {
+    padding: 0.75rem;
+    background: hsla(240, 10%, 3.9%, 0.5);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 2px);
+    color: var(--foreground);
+    font-size: 0.875rem;
+    transition: var(--transition-smooth);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px hsla(191, 91%, 36%, 0.2);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* Skills Section */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.skill-badge {
+    background: hsla(263, 83%, 57%, 0.2);
+    color: var(--primary);
+    border: 1px solid hsla(263, 83%, 57%, 0.3);
+    padding: 0.25rem 0.75rem;
+    border-radius: calc(var(--radius) - 4px);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-smooth);
+}
+
+.skill-badge:hover {
+    background: hsla(263, 83%, 57%, 0.3);
+}
+
+.remove-skill {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    transition: var(--transition-smooth);
+}
+
+.remove-skill:hover {
+    color: var(--destructive);
+}
+
+/* Social Section */
+.social-section h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 1rem;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--gradient-primary);
+    color: var(--primary-foreground);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--tech-glow);
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: var(--tech-glow), 0 10px 25px -5px hsla(263, 83%, 57%, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Login Link */
+.login-link {
+    text-align: center;
+    padding: 1.5rem 2rem 2rem;
+    border-top: 1px solid hsla(240, 3.7%, 15.9%, 0.5);
+}
+
+.login-link p {
+    color: var(--muted-foreground);
+}
+
+.link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.link:hover {
+    color: hsla(191, 91%, 36%, 0.8);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--card-foreground);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--tech-shadow);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast.error {
+    border-color: var(--destructive);
+    background: hsla(0, 84.2%, 60.2%, 0.1);
+}
+
+.toast.success {
+    border-color: var(--accent);
+    background: hsla(191, 91%, 36%, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-title {
+        font-size: 2rem;
+    }
+    
+    .main-title {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .registration-form {
+        padding: 1.5rem;
+    }
+    
+    .card-header {
+        padding: 1.5rem 1.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .form-row-three {
+        grid-template-columns: 1fr;
+    }
+}
