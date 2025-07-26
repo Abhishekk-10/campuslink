@@ -388,17 +388,12 @@
                             </div>
                             
                             <!-- Login Button -->
-                            <button type="submit" id="loginButton" class="w-full bg-primary text-white py-3 px-4 rounded-button hover:bg-primary/90 transition-all transform hover:scale-[1.02] active:scale-[0.98] relative !rounded-button whitespace-nowrap">
-                               <a href="index.php">
-                                <span class="btn-text">Sign In</span>
-
-                               </a>
-                               
-                            <div class="loading-spinner">
-                                    <div class="spinner"></div>
-                                </div>
-                            </button>
+                          
                         </div>
+                         <a href="index.php">
+                             sign in
+                         </a>
+
                     </form>
                     
                     <!-- Sign Up Link -->
@@ -535,16 +530,8 @@
             const loginButton = document.getElementById('loginButton');
             
             loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show loading animation
-                loginButton.classList.add('btn-loading');
-                
-                // Simulate API call
-                setTimeout(function() {
-                    loginButton.classList.remove('btn-loading');
-                    // Here you would normally redirect or show success message
-                }, 2000);
+                 e.
+            
             });
         });
         
