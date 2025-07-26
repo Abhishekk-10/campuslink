@@ -1,25 +1,25 @@
 <?php
-// Include config file
+
 require_once 'config/config.php';
 
 $success = "";
 $error = "";
 
-// Form submit hone ke baad
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Data fetch
+    
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $university = $_POST['university'];
     $experience = $_POST['experience'];
 
-    // Insert query
+    
     $sql = "INSERT INTO users (email, password, university, experience)
             VALUES ('$email', '$password', '$university', '$experience')";
 
     if ($conn->query($sql) === TRUE) {
-        // Redirect after successful signup
-        header("Location: Login.php");  // Ya index.html jo bhi file ho
+     
+        header("Location: Login.php");  
         exit();
     } else {
         $error = "Error: " . $conn->error;

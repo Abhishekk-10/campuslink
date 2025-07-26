@@ -41,7 +41,11 @@
 
         </a>
         <h4>Side-Hustle</h4>
-        
+
+        <a href="myteams.php">
+        <h4> My Teams </h4>
+
+        </a>
         <!-- these all wil be buttons  -->
 
     </div>

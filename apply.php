@@ -1,5 +1,5 @@
 <?php
-// Include config file
+
 include 'config/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

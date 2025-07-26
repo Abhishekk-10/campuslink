@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CampusLink - Connect with Student Teams</title>
     <style>
-        /* Global Styles */
+        
         :root {
             --primary: #4f46e5;
             --primary-dark: #4338ca;
