@@ -41,7 +41,14 @@
             background-color: white;
             padding: 0 0.25rem;
         }
-        
+        #signin{
+            text-align: center;
+            border: 2px solid black;
+            margin-top: 10px;
+            background-color: blue;
+            color: white;
+
+        }
         .particles {
             position: absolute;
             top: 0;
@@ -390,8 +397,8 @@
                             <!-- Login Button -->
                           
                         </div>
-                         <a href="index.php">
-                             sign in
+                         <a href="afterindex.php">
+                             <h3 id="signin">sign in </h3>
                          </a>
 
                     </form>
