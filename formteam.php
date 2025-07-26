@@ -1,8 +1,48 @@
+<?php
+// PHP backend logic (runs on form submit)
+$successMessage = "";
+$errorMessage = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $host = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "campuslink"; // 🔁 Apna database name yaha daalo
+
+    // Create connection
+    $conn = new mysqli($host, $username, $password, $database);
+
+    // Check connection
+    if ($conn->connect_error) {
+        $errorMessage = "Database connection failed!";
+    } else {
+        // Get form values
+        $teamName = $conn->real_escape_string($_POST['teamName']);
+        $participants = (int) $_POST['participants'];
+        $skills = $conn->real_escape_string($_POST['skills']);
+
+        // Insert query
+         $sql = "INSERT INTO teams (team_name, participants, skills)
+        VALUES ('$teamName', $participants, '$skills')";
+
+
+        if ($conn->query($sql) === TRUE) {
+            $successMessage = "✅ Team created successfully!";
+        } else {
+            $errorMessage = "❌ Error: " . $conn->error;
+        }
+
+        $conn->close();
+    }
+}
+?>
+
+<!-- 🌑 HTML with dark theme -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Create Team - Simple Text View</title>
+  <title>Create Team</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,7 +62,6 @@
       background-color: #1e1e1e;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.6);
       margin-bottom: 30px;
     }
 
@@ -44,8 +83,7 @@
       color: #f0f0f0;
     }
 
-    input::placeholder,
-    textarea::placeholder {
+    input::placeholder, textarea::placeholder {
       color: #888;
     }
 
@@ -63,16 +101,28 @@
       background-color: #0097a7;
     }
 
-    .team-line {
-      padding: 10px;
-      border-bottom: 1px solid #333;
-      font-size: 16px;
-      color: #e0e0e0;
+    .message {
+      padding: 12px;
+      border-left: 5px solid #00bcd4;
+      margin-bottom: 20px;
+      background-color: #1e1e1e;
     }
 
-    .team-line span {
-      color: #00bcd4;
-      font-weight: bold;
+    .team-summary {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-left: 4px solid #00bcd4;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .team-summary h3 {
+      margin: 0 0 10px 0;
+      color: #00ffcc;
+    }
+
+    .team-summary p {
+      margin: 4px 0;
     }
   </style>
 </head>
@@ -80,45 +130,58 @@
 
   <h1>Create Your Team</h1>
 
-  <form id="teamForm">
+  <!-- ✅ Show success or error -->
+  <?php if ($successMessage): ?>
+    <div class="message" style="color: #00ffcc;"><?php echo $successMessage; ?></div>
+  <?php elseif ($errorMessage): ?>
+    <div class="message" style="color: #ff6666;"><?php echo $errorMessage; ?></div>
+  <?php endif; ?>
+
+  <!-- 📄 Form -->
+  <form method="POST" onsubmit="showTeamCard(event)">
     <label for="teamName">Team Name</label>
-    <input type="text" id="teamName" placeholder="Enter team name" required>
+    <input type="text" id="teamName" name="teamName" required>
 
     <label for="participants">Number of Participants</label>
-    <input type="number" id="participants" placeholder="e.g. 4" required min="1">
+    <input type="number" id="participants" name="participants" required min="1">
 
     <label for="skills">Skills Required</label>
-    <textarea id="skills" placeholder="e.g. HTML, CSS, JavaScript" required></textarea>
+    <textarea id="skills" name="skills" required></textarea>
 
     <button type="submit">Create Team</button>
   </form>
 
-  <div id="teamList">
-    <!-- Teams will appear here -->
-  </div>
+  <!-- 📦 Team Card Display -->
+  <div id="teamCard"></div>
 
+  <!-- 🔥 JavaScript -->
   <script>
-    document.getElementById('teamForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+    function showTeamCard(event) {
+      // Stop actual form submit
+      event.preventDefault();
 
-      const name = document.getElementById('teamName').value.trim();
-      const count = document.getElementById('participants').value.trim();
+      // Get values
+      const teamName = document.getElementById('teamName').value.trim();
+      const participants = document.getElementById('participants').value;
       const skills = document.getElementById('skills').value.trim();
 
-      if (name === '' || count === '' || skills === '') {
-        alert("Please fill all fields!");
-        return;
-      }
+      // Create display
+      const cardDiv = document.getElementById('teamCard');
+      cardDiv.innerHTML = `
+        <div class="team-summary">
+          <h3>🚀 Team Preview</h3>
+          <p><strong>Team Name:</strong> ${teamName}</p>
+          <p><strong>Participants:</strong> ${participants}</p>
+          <p><strong>Skills:</strong> ${skills}</p>
+        </div>
+      `;
 
-      const line = document.createElement('div');
-      line.className = 'team-line';
-      line.innerHTML = `🔹 <span>${name}</span> (${count} members) – Skills: ${skills}`;
-      document.getElementById('teamList').appendChild(line);
-
-      // Clear the form
-      document.getElementById('teamForm').reset();
-    });
+      // Submit the form after 500ms delay to show preview first
+      setTimeout(() => {
+        event.target.submit();
+      }, 500);
+    }
   </script>
 
 </body>
-</html
+</html>
