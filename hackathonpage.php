@@ -373,8 +373,9 @@
             <h1>CampusLink</h1>
         </a>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Find Team</a>
+            <a href="afterindex.php">Home</a>
+            <a href="apply.php">Find Team</a>
+            <a href="formteam.php">Form Team</a>
             <a href="#">Hackathons</a>
             <a href="#">College Projects</a>
             <a href="#">Side Hustle</a>

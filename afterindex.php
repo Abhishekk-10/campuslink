@@ -40,10 +40,16 @@
 
 
         </a>
-        <h4>Side-Hustle</h4>
+     <a href="sidehustle.php">
+           <h4>Side-Hustle</h4>
+     </a>
 
         <a href="myteams.php">
         <h4> My Teams </h4>
+
+        </a>
+          <a href="profile.php">
+        <h4> MyProfile </h4>
 
         </a>
         <!-- these all wil be buttons  -->
@@ -54,9 +60,8 @@
     <div id="cursor-blur"></div>
 
     <!-- <video autoplay muted loop src="video2.mp4" ></video> -->
-    <img id="backgroundimage"
-        src="https://images.unsplash.com/photo-1651250211698-0a69ae8f4b38?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNpbXBsZSUyMGRhcmslMjB0aGVtZSUyMDNkJTIwYmFja2dyb3VuZCUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D"
-        alt="">
+   <video id="backgroundimage"
+ src="video.mp4" autoplay muted loop ></video>
 
     <div id="main">
 

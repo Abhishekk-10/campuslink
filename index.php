@@ -37,7 +37,9 @@
 
 
         </a>
-        <h4>Side-Hustle</h4>
+         <a href="sidehustle.php">
+           <h4>Side-Hustle</h4>
+     </a>
         <a>
             <h4>Log In</h4>
         </a>
@@ -52,9 +54,8 @@
     <div id="cursor-blur"></div>
 
     <!-- <video autoplay muted loop src="video2.mp4" ></video> -->
-    <img id="backgroundimage"
-        src="https://images.unsplash.com/photo-1651250211698-0a69ae8f4b38?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNpbXBsZSUyMGRhcmslMjB0aGVtZSUyMDNkJTIwYmFja2dyb3VuZCUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D"
-        alt="">
+<video id="backgroundimage"
+ src="video.mp4" autoplay muted loop ></video>
 
     <div id="main">
 
@@ -117,7 +118,7 @@
                         <h4>HACKATHON </h4>
                         <P>A hackathon is basically a tech jam session where you squad up, code hard, and build
                             something cool</P>
-                        <a href="/frontend/components/hackathonpage.html">
+                        <a href="hackathonpage.php">
                             <button>LET'S BEGIN</button>
 
                         </a>
@@ -130,7 +131,7 @@
 
                         <P>A college project is that “do-or-die” collab where you and your gang hustle last-minute to
                             turn chaos into credits !</P>
-                        <a href="/frontend/components/collegeproject.html">
+                        <a href="collegeproject.php">
                             <button>LET'S BEGIN</button>
 
                         </a>
@@ -140,7 +141,7 @@
                     <div class="overlay">
                         <h4> SIDE HUSTLE </h4>
                         <P>A side hustle is that extra grind you do outside the 9 to 5 — chasing bags, not bosses!</P>
-                        <a href="/frontend/components/sidehustle.html">
+                        <a href="sidehustle.php">
                             <button>LET'S BEGIN</button>
                         </a>
                     </div>

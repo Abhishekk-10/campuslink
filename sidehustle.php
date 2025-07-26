@@ -521,11 +521,11 @@
             <h1>CampusLink</h1>
         </a>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Find Team</a>
-            <a href="#">Hackathons</a>
-            <a href="#">College Projects</a>
-            <a href="#">Side Hustle</a>
+            <a href="afterindex.php">Home</a>
+            <a href="findTeam.php">Find Team</a>
+            <a href="hackathonpage.php">Hackathons</a>
+            <a href="collegeproject.php">College Projects</a>
+            <!-- <a href="sidehustle.php">Side Hustle</a> -->
         </div>
         <!-- <button class="login-btn">Login</button> -->
     </nav>
@@ -968,7 +968,7 @@
         <div class="cta">
             <h2>Ready to Start Your Side Hustle?</h2>
             <p>Turn your skills and interests into income while building valuable experience for your future career.</p>
-            <button class="cta-btn">Find Side Hustle Ideas</button>
+           <a href="sidehustleidea.php">find sidehustleideas</a>
         </div>
     </div>
 

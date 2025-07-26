@@ -457,11 +457,11 @@
             <h1>CampusLink</h1>
         </a>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Find Team</a>
-            <a href="#">Hackathons</a>
-            <a href="#">College Projects</a>
-            <a href="#">Side Hustle</a>
+            <a href="afterindex.php">Home</a>
+            <a href="FindTeam.php">Find Team</a>
+            <a href="hackathonpage.php">Hackathons</a>
+            <!-- <a href="#">College Projects</a> -->
+            <a href="sidehustle.php">Side Hustle</a>
         </div>
         <!-- <button class="login-btn">Login</button> -->
     </nav>
